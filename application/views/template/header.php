@@ -64,7 +64,7 @@
 							</li>
 							<li><a href="<?= base_url('data') ?>"><i class="fa fa-database"></i> Data</a>
 							</li>
-							<li><a><i class="fa fa-cogs"></i> Training</a>
+							<li><a href="<?= base_url('training') ?>"><i class="fa fa-cogs"></i> Training</a>
 							</li>
 							<li><a><i class="fa fa-check-square"></i> Akurasi</a>
 							</li>
