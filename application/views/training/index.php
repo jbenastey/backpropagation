@@ -19,13 +19,19 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td>1</td>
-							<td>1</td>
-							<td>3</td>
-							<td>70 %</td>
-							<td class="text-center"><a href="#" class="btn btn-sm btn-primary">Lihat</a></td>
-						</tr>
+						<?php
+						foreach($inisial as $key=>$value):
+						?>
+							<tr>
+								<td><?= $key+1 ?></td>
+								<td><?= $value['alpha'] ?></td>
+								<td><?= $value['variasi_hidden'] ?></td>
+								<td><?= $value['jumlah'] ?></td>
+								<td class="text-center"><a href="<?= base_url('training/lihat/'.$value['id']) ?>" class="btn btn-sm btn-primary">Lihat</a></td>
+							</tr>
+						<?php
+						endforeach;
+						?>
 						</tbody>
 					</table>
 

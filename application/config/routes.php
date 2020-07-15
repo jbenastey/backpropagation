@@ -57,4 +57,5 @@ $route['data'] = 'DataController';
 $route['training'] = 'TrainingController';
 $route['training/hitung'] = 'TrainingController/hitung';
 $route['training/proseshitung'] = 'TrainingController/prosesHitung';
+$route['training/lihat/(:any)'] = 'TrainingController/lihat/$1';
 

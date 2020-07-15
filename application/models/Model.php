@@ -15,4 +15,11 @@ class Model extends CI_Model{
 	public function tambah($table,$data){
 		$this->db->insert($table,$data);
 	}
+
+	public function first($id,$table){
+		$this->db->from($table);
+		$this->db->where('id',$id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
 }

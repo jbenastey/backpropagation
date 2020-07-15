@@ -50,4 +50,11 @@ class TrainingController extends CI_Controller{
 		$this->model->tambah('inisialisasi',$data);
 		redirect('training');
 	}
+
+	public function lihat($id){
+		$data['inisial'] = $this->model->first($id,'inisialisasi');
+		$this->load->view('template/header');
+		$this->load->view('training/lihat',$data);
+		$this->load->view('template/footer');
+	}
 }
