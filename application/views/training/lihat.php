@@ -86,6 +86,19 @@
 						</div>
 					</div>
 
+					<div class="">
+						<?php
+						if($training == null):
+						?>
+							<a href="<?= base_url('training/hitung-training/'.$inisial['id']) ?>" class="btn btn-primary">Hitung Training</a>
+						<?php
+						else:
+							?>
+
+						<?php
+						endif
+						?>
+					</div>
 				</div>
 			</div>
 		</div>

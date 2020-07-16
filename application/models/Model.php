@@ -16,9 +16,9 @@ class Model extends CI_Model{
 		$this->db->insert($table,$data);
 	}
 
-	public function first($id,$table){
+	public function first($id,$key,$table){
 		$this->db->from($table);
-		$this->db->where('id',$id);
+		$this->db->where($key,$id);
 		$query = $this->db->get();
 		return $query->row_array();
 	}
