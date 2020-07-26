@@ -22,4 +22,11 @@ class Model extends CI_Model{
 		$query = $this->db->get();
 		return $query->row_array();
 	}
+
+	public function search($id,$key,$table){
+		$this->db->from($table);
+		$this->db->where($key,$id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 }

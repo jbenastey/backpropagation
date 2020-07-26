@@ -10,6 +10,8 @@
 					<p>Alpha = <?= $inisial['alpha'] ?></p>
 					<p>Bagi Data = <?= $inisial['jumlah'] ?></p>
 					<p>Variasi Hidden = <?= $inisial['variasi_hidden'] ?></p>
+					<p>Max Epoch = <?= $inisial['max_epoch'] ?></p>
+					<p>Koridor = <?= $inisial['koridor'] ?></p>
 					<hr>
 					<div class="row">
 						<div class="col-md-9">
@@ -85,6 +87,7 @@
 							</table>
 						</div>
 					</div>
+					<hr>
 
 					<div class="">
 						<?php

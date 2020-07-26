@@ -38,6 +38,32 @@
 								</select>
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Max Epoch <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input type="text" name="max_epoch" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Koridor</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<select name="koridor" id="middle-name" class="form-control" required="required">
+									<option value="1">1</option>
+									<option value="1A">1A</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4A">4A</option>
+									<option value="4B">4B</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7A">7A</option>
+									<option value="7B">7B</option>
+									<option value="8A">8A</option>
+									<option value="8B">8B</option>
+								</select>
+							</div>
+						</div>
 						<div class="ln_solid"></div>
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -46,7 +72,6 @@
 								<button type="submit" class="btn btn-success">Submit</button>
 							</div>
 						</div>
-
 					</form>
 
 				</div>

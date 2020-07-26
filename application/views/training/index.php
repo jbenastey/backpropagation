@@ -15,6 +15,8 @@
 							<th>Alpha</th>
 							<th>Variasi Hidden</th>
 							<th>Bagi Data</th>
+							<th>Max Epoch</th>
+							<th>Koridor</th>
 							<th class="text-center"><i class="fa fa-gear"></i></th>
 						</tr>
 						</thead>
@@ -27,6 +29,8 @@
 								<td><?= $value['alpha'] ?></td>
 								<td><?= $value['variasi_hidden'] ?></td>
 								<td><?= $value['jumlah'] ?></td>
+								<td><?= $value['max_epoch'] ?></td>
+								<td><?= $value['koridor'] ?></td>
 								<td class="text-center"><a href="<?= base_url('training/lihat/'.$value['id']) ?>" class="btn btn-sm btn-primary">Lihat</a></td>
 							</tr>
 						<?php
