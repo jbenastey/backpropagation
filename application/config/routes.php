@@ -60,3 +60,7 @@ $route['training/proseshitung'] = 'TrainingController/prosesHitung';
 $route['training/lihat/(:any)'] = 'TrainingController/lihat/$1';
 $route['training/hitung-training/(:any)'] = 'TrainingController/hitungTraining/$1';
 
+$route['akurasi'] = 'AkurasiController';
+$route['akurasi/lihat/(:any)'] = 'AkurasiController/lihat/$1';
+$route['akurasi/hitung-akurasi/(:any)'] = 'AkurasiController/hitung/$1';
+
