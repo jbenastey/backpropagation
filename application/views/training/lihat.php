@@ -97,7 +97,81 @@
 						<?php
 						else:
 							?>
-
+							<div class="row">
+								<div class="col-md-9">
+									<?php
+									$input = json_decode($training['input'], true);
+									$hidden = json_decode($training['hidden'], true);
+									?>
+									<p>Bobot dan bias dari lapisan input ke lapisan hidden
+									</p>
+									<table class="table table-bordered">
+										<thead>
+										<tr>
+											<th>vij (baru)</th>
+											<th colspan="<?= count($input) ?>" class="text-center">j</th>
+										</tr>
+										<tr>
+											<th>i</th>
+											<?php
+											foreach ($input as $key => $value):
+												?>
+												<th><?= $key ?></th>
+											<?php
+											endforeach;
+											?>
+										</tr>
+										</thead>
+										<tbody>
+										<?php
+										for ($i = 0; $i <= 5; $i++):
+											?>
+											<tr>
+												<td><?= $i ?></td>
+												<?php
+												foreach ($input as $key => $value):
+													?>
+													<td><?= $value[$i] ?></td>
+												<?php
+												endforeach;
+												?>
+											</tr>
+										<?php
+										endfor;
+										?>
+										</tbody>
+									</table>
+								</div>
+								<div class="col-md-3">
+									<p>Bobot dan bias dari lapisan hidden ke lapisan output
+									</p>
+									<table class="table table-bordered">
+										<thead>
+										<tr>
+											<th>wjk (baru)</th>
+											<th>k</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td>j</td>
+											<td>1</td>
+										</tr>
+										<?php
+										foreach($hidden as $key=>$value):
+											?>
+											<tr>
+												<td><?= $key ?></td>
+												<td><?= $value ?></td>
+											</tr>
+										<?php
+										endforeach;
+										?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						<p><b>MSE = <?= $training['mse'] ?></b></p>
 						<?php
 						endif
 						?>
