@@ -1,129 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<!-- Meta, title, CSS, favicons, etc. -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
-
 	<title>Backpropagation</title>
-
-	<!-- Bootstrap -->
-	<link href="<?= base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Font Awesome -->
-	<link href="<?= base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<!-- NProgress -->
-	<link href="<?= base_url() ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/font-awesome/css/font-awesome.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/custom.css">
 	<!-- iCheck -->
-	<link href="<?= base_url() ?>assets/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
-	<!-- bootstrap-progressbar -->
-	<link href="<?= base_url() ?>assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-	<!-- JQVMap -->
-	<link href="<?= base_url() ?>assets/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-	<!-- bootstrap-daterangepicker -->
-	<link href="<?= base_url() ?>assets/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-	<!-- Custom Theme Style -->
-	<link href="<?= base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/iCheck/flat/blue.css">
+	<!-- Morris chart -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/morris/morris.css">
+	<!-- jvectormap -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+	<!-- Date Picker -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datepicker/datepicker3.css">
+	<!-- Daterange picker -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/daterangepicker/daterangepicker-bs3.css">
+	<!-- bootstrap wysihtml5 - text editor -->
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap4.min.css">
+	<!-- Google Font: Source Sans Pro -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<link rel="shortcut icon" href="<?= base_url() ?>assets/dist/img/iconBuku2.png">
+	<link rel="shortcut icon" href="<?= base_url() ?>assets/dist/css/sweetalert2.min.css">
 </head>
+<body class="hold-transition sidebar-mini <?php
+if ($this->uri->segment(2) == 'lihat') {
+	echo 'sidebar-collapse';
+}if ($this->uri->segment(1) == 'data') {
+	echo 'sidebar-collapse';
+}
+?>" style="overflow: hidden;">
+<div class="wrapper">
 
-<body class="nav-md">
-<div class="container body">
-	<div class="main_container">
-		<div class="col-md-3 left_col">
-			<div class="left_col scroll-view">
-				<div class="navbar nav_title" style="border: 0;">
-					<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Backpropagation</span></a>
+	<!-- Navbar -->
+	<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom" <?php
+	if ($this->session->userdata('session_id') == null) {
+		echo 'style="display:none;"';
+	}
+	?>>
+		<!-- Left navbar links -->
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+			</li>
+
+		</ul>
+
+		<!-- Right navbar links -->
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+							class="fa fa-th-large"></i></a>
+			</li>
+			<li class="nav-item">
+				<a href="<?= base_url('logout') ?>" class="btn btn-primary" onclick="return confirm('Logout? ')"><i
+							class="fa fa-sign-out"></i></a>
+			</li>
+		</ul>
+	</nav>
+	<!-- /.navbar -->
+
+	<!-- Main Sidebar Container -->
+	<aside class="main-sidebar sidebar-dark-primary elevation-4" <?php
+	if ($this->session->userdata('session_id') == null) {
+		echo 'style="display:none;"';
+	}
+	?>>
+		<!-- Brand Logo -->
+		<a href="<?= base_url() ?>" class="brand-link">
+			<img src="<?= base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+				 class="brand-image img-circle elevation-3"
+				 style="opacity: .8">
+			<span class="brand-text font-weight-light">Backpropagation</span>
+		</a>
+
+		<!-- Sidebar -->
+		<div class="sidebar">
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+				<div class="image">
+					<img src="<?= base_url() ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+						 alt="User Image">
 				</div>
-
-				<div class="clearfix"></div>
-
-				<!-- menu profile quick info -->
-				<div class="profile clearfix">
-					<div class="profile_pic">
-						<img src="<?= base_url() ?>assets/production/images/img.jpg" alt="..." class="img-circle profile_img">
-					</div>
-					<div class="profile_info">
-						<span>Welcome,</span>
-						<h2>John Doe</h2>
-					</div>
+				<div class="info">
+					<a href="#" class="d-block">Nanda</a>
+					<a href="#" class="d-block"></a>
 				</div>
-				<!-- /menu profile quick info -->
-
-				<br />
-
-				<!-- sidebar menu -->
-				<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-					<div class="menu_section">
-						<h3>General</h3>
-						<ul class="nav side-menu">
-							<li><a><i class="fa fa-home"></i> Home</a>
-							</li>
-							<li><a href="<?= base_url('data') ?>"><i class="fa fa-database"></i> Data</a>
-							</li>
-							<li><a href="<?= base_url('training') ?>"><i class="fa fa-cogs"></i> Training</a>
-							</li>
-							<li><a href="<?= base_url('akurasi') ?>"><i class="fa fa-check-square"></i> Akurasi</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /sidebar menu -->
-
-				<!-- /menu footer buttons -->
-				<div class="sidebar-footer hidden-small">
-					<a data-toggle="tooltip" data-placement="top" title="Settings">
-						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-					</a>
-					<a data-toggle="tooltip" data-placement="top" title="FullScreen">
-						<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-					</a>
-					<a data-toggle="tooltip" data-placement="top" title="Lock">
-						<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-					</a>
-					<a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-					</a>
-				</div>
-				<!-- /menu footer buttons -->
 			</div>
+
+			<!-- Sidebar Menu -->
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+					data-accordion="false">
+					<!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+					<li class="nav-item">
+						<a href="<?= base_url('') ?>"
+						   class="nav-link <?php if ($this->uri->segment('1') == '') echo 'active' ?>">
+							<i class="nav-icon fa fa-home"></i>
+							<p class="text">Beranda</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('data') ?>"
+						   class="nav-link <?php if ($this->uri->segment('1') == 'data') echo 'active' ?>">
+							<i class="nav-icon fa fa-file"></i>
+							<p class="text">Data</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('training') ?>"
+						   class="nav-link <?php if ($this->uri->segment('1') == 'training') echo 'active' ?>">
+							<i class="nav-icon fa fa-gear"></i>
+							<p class="text">Training</p>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('akurasi') ?>"
+						   class="nav-link <?php if ($this->uri->segment('1') == 'akurasi') echo 'active' ?>">
+							<i class="nav-icon fa fa-line-chart"></i>
+							<p class="text">Akurasi</p>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
 		</div>
+		<!-- /.sidebar -->
+	</aside>
 
-		<!-- top navigation -->
-		<div class="top_nav">
-			<div class="nav_menu">
-				<nav>
-					<div class="nav toggle">
-						<a id="menu_toggle"><i class="fa fa-bars"></i></a>
-					</div>
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper <?php
+	if ($this->session->userdata('session_id') == null) {
+		echo 'mr-lg-5';
+	}
+	?>">
 
-					<ul class="nav navbar-nav navbar-right">
-						<li class="">
-							<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-								<img src="images/img.jpg" alt="">John Doe
-								<span class=" fa fa-angle-down"></span>
-							</a>
-							<ul class="dropdown-menu dropdown-usermenu pull-right">
-								<li><a href="javascript:;"> Profile</a></li>
-								<li>
-									<a href="javascript:;">
-										<span class="badge bg-red pull-right">50%</span>
-										<span>Settings</span>
-									</a>
-								</li>
-								<li><a href="javascript:;">Help</a></li>
-								<li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-							</ul>
-						</li>
 
-					</ul>
-				</nav>
-			</div>
-		</div>
-		<!-- /top navigation -->
-
-		<!-- page content -->
-		<div class="right_col" role="main">

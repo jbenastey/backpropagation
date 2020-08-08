@@ -1,14 +1,21 @@
-<div class="">
+
+<div class="content-header">
+	<div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col-sm-6">
+				<h1 class="m-0 text-dark">Data Koridor</h1>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.container-fluid -->
+</div>
+
+<div class="content">
+	<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
-				<div class="x_title">
-					<h2>Data Koridor</h2>
-					<div class="clearfix"></div>
-				</div>
-				<div class="x_content">
-
-					<table class="table table-bordered">
+			<div class="card">
+				<div class="card-body">
+					<table class="table table-bordered" id="example1">
 						<thead>
 						<tr>
 							<th>No</th>
@@ -60,4 +67,5 @@
 		<div class="clearfix"></div>
 
 	</div>
+</div>
 </div>

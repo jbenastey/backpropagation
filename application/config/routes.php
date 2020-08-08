@@ -62,5 +62,6 @@ $route['training/hitung-training/(:any)'] = 'TrainingController/hitungTraining/$
 
 $route['akurasi'] = 'AkurasiController';
 $route['akurasi/lihat/(:any)'] = 'AkurasiController/lihat/$1';
+$route['akurasi/grafik/(:any)'] = 'AkurasiController/grafik/$1';
 $route['akurasi/hitung-akurasi/(:any)'] = 'AkurasiController/hitung/$1';
 

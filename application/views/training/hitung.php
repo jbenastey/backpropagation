@@ -1,12 +1,21 @@
-<div class="">
+
+<div class="content-header">
+	<div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col-sm-6">
+				<h1 class="m-0 text-dark">Inisialisasi</h1>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.container-fluid -->
+</div>
+<div class="content">
+	<div class="container-fluid">
+
+
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
-				<div class="x_title">
-					<h2>Inisialisasi</h2>
-					<div class="clearfix"></div>
-				</div>
-				<div class="x_content">
+			<div class="card">
+				<div class="card-body">
 
 					<form id="demo-form2" method="post" action="<?= base_url('training/proseshitung') ?>" data-parsley-validate class="form-horizontal form-label-left">
 
@@ -81,4 +90,5 @@
 		<div class="clearfix"></div>
 
 	</div>
+</div>
 </div>

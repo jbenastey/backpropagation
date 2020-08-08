@@ -1,12 +1,19 @@
-<div class="">
+
+<div class="content-header">
+	<div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col-sm-6">
+				<h1 class="m-0 text-dark">Lihat Perhitungan Akurasi</h1>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.container-fluid -->
+</div>
+<div class="content">
+	<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
-				<div class="x_title">
-					<h2>Lihat Perhitungan Akurasi</h2>
-					<div class="clearfix"></div>
-				</div>
-				<div class="x_content">
+			<div class="card">
+				<div class="card-body">
 					<p>Alpha = <?= $bobot['alpha'] ?></p>
 					<p>Bagi Data = <?= $bobot['jumlah'] ?></p>
 					<p>Variasi Hidden = <?= $bobot['variasi_hidden'] ?></p>
@@ -100,6 +107,14 @@
 							?>
 							<div class="row">
 								<div class="col-12">
+											<input type="hidden" value="<?= $akurasi['id_bobot'] ?>" id="id">
+											<div class="chart">
+												<canvas id="akurasi-chart" width="1000" height="280"></canvas>
+											</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
 									<table class="table table-bordered">
 										<thead>
 										<tr>
@@ -116,15 +131,15 @@
 										$target = json_decode($akurasi['target'], true);
 										$denormalisasi = json_decode($akurasi['denormalisasi'], true);
 										$targeta = json_decode($akurasi['targeta'], true);
-										for ($i = 0;$i<count($hasil);$i++):
+										for ($i = 0; $i < count($hasil); $i++):
 											?>
-										<tr>
-											<td><?= $i+1 ?></td>
-											<td><?= $hasil[$i] ?></td>
-											<td><?= $target[$i] ?></td>
-											<td><?= $denormalisasi[$i] ?></td>
-											<td><?= $targeta[$i] ?></td>
-										</tr>
+											<tr>
+												<td><?= $i + 1 ?></td>
+												<td><?= $hasil[$i] ?></td>
+												<td><?= $target[$i] ?></td>
+												<td><?= $denormalisasi[$i] ?></td>
+												<td><?= $targeta[$i] ?></td>
+											</tr>
 										<?php
 										endfor;
 										?>
@@ -147,4 +162,7 @@
 		<div class="clearfix"></div>
 
 	</div>
+</div>
+
+
 </div>

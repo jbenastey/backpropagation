@@ -103,6 +103,11 @@ class AkurasiController extends CI_Controller
 
 	}
 
+	public function grafik($id){
+		$akurasi = $this->model->getAkurasi1($id);
+		echo json_encode($akurasi);
+	}
+
 	function max(){
 		$data = $this->model->get('data_koridor');
 
