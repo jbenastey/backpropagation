@@ -3,7 +3,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
 				<div class="x_title">
-					<h2>Lihat Perhitungan</h2>
+					<h2>Lihat Perhitungan Akurasi</h2>
 					<div class="clearfix"></div>
 				</div>
 				<div class="x_content">
@@ -74,7 +74,7 @@
 									<td>1</td>
 								</tr>
 								<?php
-								foreach($hidden as $key=>$value):
+								foreach ($hidden as $key => $value):
 									?>
 									<tr>
 										<td><?= $key ?></td>
@@ -91,87 +91,51 @@
 
 					<div class="">
 						<?php
-						if($akurasi == null):
+						if ($akurasi == null):
 							?>
-							<a href="<?= base_url('akurasi/hitung-akurasi/'.$bobot['id']) ?>" class="btn btn-primary">Hitung Training</a>
+							<a href="<?= base_url('akurasi/hitung-akurasi/' . $bobot['id']) ?>" class="btn btn-primary">Hitung
+								Training</a>
 						<?php
 						else:
 							?>
 							<div class="row">
-								<div class="col-md-9">
-									<?php
-									$input = json_decode($akurasi['input'], true);
-									$hidden = json_decode($akurasi['hidden'], true);
-									?>
-									<p>Bobot dan bias dari lapisan input ke lapisan hidden
-									</p>
+								<div class="col-12">
 									<table class="table table-bordered">
 										<thead>
 										<tr>
-											<th>vij (baru)</th>
-											<th colspan="<?= count($input) ?>" class="text-center">j</th>
-										</tr>
-										<tr>
-											<th>i</th>
-											<?php
-											foreach ($input as $key => $value):
-												?>
-												<th><?= $key ?></th>
-											<?php
-											endforeach;
-											?>
+											<th>Data</th>
+											<th>Hasil Prediksi</th>
+											<th>Target</th>
+											<th>Denormalisasi Hasil Prediksi</th>
+											<th>Nilai Target Asli</th>
 										</tr>
 										</thead>
 										<tbody>
 										<?php
-										for ($i = 0; $i <= 5; $i++):
+										$hasil = json_decode($akurasi['hasil_prediksi'], true);
+										$target = json_decode($akurasi['target'], true);
+										$denormalisasi = json_decode($akurasi['denormalisasi'], true);
+										$targeta = json_decode($akurasi['targeta'], true);
+										for ($i = 0;$i<count($hasil);$i++):
 											?>
-											<tr>
-												<td><?= $i ?></td>
-												<?php
-												foreach ($input as $key => $value):
-													?>
-													<td><?= $value[$i] ?></td>
-												<?php
-												endforeach;
-												?>
-											</tr>
+										<tr>
+											<td><?= $i+1 ?></td>
+											<td><?= $hasil[$i] ?></td>
+											<td><?= $target[$i] ?></td>
+											<td><?= $denormalisasi[$i] ?></td>
+											<td><?= $targeta[$i] ?></td>
+										</tr>
 										<?php
 										endfor;
 										?>
-										</tbody>
-									</table>
-								</div>
-								<div class="col-md-3">
-									<p>Bobot dan bias dari lapisan hidden ke lapisan output
-									</p>
-									<table class="table table-bordered">
-										<thead>
 										<tr>
-											<th>wjk (baru)</th>
-											<th>k</th>
+											<td colspan="4" class="text-center"><b>MSE</b></td>
+											<td><b><?= $akurasi['mses'] ?></b></td>
 										</tr>
-										</thead>
-										<tbody>
-										<tr>
-											<td>j</td>
-											<td>1</td>
-										</tr>
-										<?php
-										foreach($hidden as $key=>$value):
-											?>
-											<tr>
-												<td><?= $key ?></td>
-												<td><?= $value ?></td>
-											</tr>
-										<?php
-										endforeach;
-										?>
 										</tbody>
 									</table>
 								</div>
 							</div>
-							<p><b>MSE = <?= $akurasi['mse'] ?></b></p>
 						<?php
 						endif
 						?>

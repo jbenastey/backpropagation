@@ -52,4 +52,24 @@ class Model extends CI_Model{
 		$query = $this->db->get();
 		return $query->row_array();
 	}
+
+	public function searchU($id,$key,$table){
+		$this->db->from($table);
+		$this->db->where($key,$id);
+		$this->db->order_by('id','desc');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	public function max(){
+		$this->db->select_max('x1', 'x2', 'x3', 'x4', 'x5');
+		$query = $this->db->get('data_koridor');
+		return $query->row_array();
+	}
+
+	public function min(){
+		$this->db->select_min('x1', 'x2', 'x3', 'x4', 'x5');
+		$query = $this->db->get('data_koridor');
+		return $query->row_array();
+	}
 }
