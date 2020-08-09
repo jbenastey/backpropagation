@@ -7,7 +7,9 @@ class AkurasiController extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Model', 'model');
-
+		if (!$this->session->has_userdata('session_id')) {
+			redirect(base_url('login'));
+		}
 	}
 
 	public function index()

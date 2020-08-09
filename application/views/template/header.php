@@ -41,11 +41,7 @@ if ($this->uri->segment(2) == 'lihat') {
 <div class="wrapper">
 
 	<!-- Navbar -->
-	<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom" <?php
-	if ($this->session->userdata('session_id') == null) {
-		echo 'style="display:none;"';
-	}
-	?>>
+	<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom" >
 		<!-- Left navbar links -->
 		<ul class="navbar-nav">
 			<li class="nav-item">
@@ -69,11 +65,7 @@ if ($this->uri->segment(2) == 'lihat') {
 	<!-- /.navbar -->
 
 	<!-- Main Sidebar Container -->
-	<aside class="main-sidebar sidebar-dark-primary elevation-4" <?php
-	if ($this->session->userdata('session_id') == null) {
-		echo 'style="display:none;"';
-	}
-	?>>
+	<aside class="main-sidebar sidebar-dark-primary elevation-4" >
 		<!-- Brand Logo -->
 		<a href="<?= base_url() ?>" class="brand-link">
 			<img src="<?= base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
@@ -138,10 +130,6 @@ if ($this->uri->segment(2) == 'lihat') {
 	</aside>
 
 	<!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper <?php
-	if ($this->session->userdata('session_id') == null) {
-		echo 'mr-lg-5';
-	}
-	?>">
+	<div class="content-wrapper">
 
 
