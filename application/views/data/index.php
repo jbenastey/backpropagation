@@ -18,6 +18,9 @@
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 						Import
 					</button>
+					<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal1">
+						Normalisasi
+					</button>
 					<hr>
 					<table class="table table-bordered" id="example1">
 						<thead>
@@ -96,6 +99,49 @@
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 							<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
 							<button type="submit" class="btn btn-success" name="upload">Import</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Normalisasi</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="demo-form2" method="post" action="<?= base_url('normalisasi') ?>" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+					<div class="form-group">
+						<div class="col-md-12 col-sm-6 col-xs-12">
+							<label for="middle-name">Pilih Koridor</label>
+							<select name="koridor" id="middle-name" class="form-control" required="required">
+								<option value="1">1</option>
+								<option value="1A">1A</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4A">4A</option>
+								<option value="4B">4B</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7A">7A</option>
+								<option value="7B">7B</option>
+								<option value="8A">8A</option>
+								<option value="8B">8B</option>
+							</select>
+						</div>
+					</div>
+					<div class="ln_solid"></div>
+					<div class="form-group">
+						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+							<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+							<button type="submit" class="btn btn-success" name="gas">Proses</button>
 						</div>
 					</div>
 				</form>

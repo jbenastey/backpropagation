@@ -16,6 +16,11 @@ class Model extends CI_Model{
 		$this->db->insert($table,$data);
 	}
 
+	public function update($id,$key,$table,$data){
+		$this->db->where($key, $id);
+		$this->db->update($table, $data);
+	}
+
 	public function first($id,$key,$table){
 		$this->db->from($table);
 		$this->db->where($key,$id);

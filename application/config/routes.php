@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['data'] = 'DataController';
 $route['import'] = 'DataController/import';
+$route['normalisasi'] = 'DataController/normalisasi';
 
 $route['training'] = 'TrainingController';
 $route['training/hitung'] = 'TrainingController/hitung';
