@@ -54,6 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['data'] = 'DataController';
+$route['import'] = 'DataController/import';
+
 $route['training'] = 'TrainingController';
 $route['training/hitung'] = 'TrainingController/hitung';
 $route['training/proseshitung'] = 'TrainingController/prosesHitung';

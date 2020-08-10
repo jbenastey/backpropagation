@@ -15,6 +15,10 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+						Import
+					</button>
+					<hr>
 					<table class="table table-bordered" id="example1">
 						<thead>
 						<tr>
@@ -68,4 +72,34 @@
 
 	</div>
 </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="demo-form2" method="post" action="<?= base_url('import') ?>" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+					<div class="form-group">
+						<div class="col-md-12 col-sm-6 col-xs-12">
+							<a href="<?= base_url('assets/excel/format/format.xlsx') ?>" class="btn btn-primary">Format</a><br>
+
+							<input type="file" name="excel" id="first-name" required="required" class="form-control col-md-12 col-xs-12">
+						</div>
+					</div>
+					<div class="ln_solid"></div>
+					<div class="form-group">
+						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+							<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+							<button type="submit" class="btn btn-success" name="upload">Import</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
