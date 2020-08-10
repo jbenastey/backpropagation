@@ -38,8 +38,8 @@ class AkurasiController extends CI_Controller
 		$inisial = $this->model->first($id, 'id', 'inisialisasi');
 		$bobot = $this->model->first($id, 'id_inisial', 'bobot_baru');
 		$datas = $this->model->searchU($inisial['koridor'], 'koridor', 'data_koridor');
-		$max = $this->max();
-		$min = $this->min();
+		$max = $this->max($inisial['koridor']);
+		$min = $this->min($inisial['koridor']);
 
 		$data = array();
 		$jumlah = round(count($datas) * (100 - $inisial['jumlah']) / 100);
@@ -110,8 +110,8 @@ class AkurasiController extends CI_Controller
 		echo json_encode($akurasi);
 	}
 
-	function max(){
-		$data = $this->model->get('data_koridor');
+	function max($koridor){
+		$data = $this->model->searchU($koridor, 'koridor', 'data_koridor');
 
 		$variabel = array(
 			'x1' => array(),
@@ -130,8 +130,8 @@ class AkurasiController extends CI_Controller
 		return max($variabel['x1']);
 	}
 
-	function min(){
-		$data = $this->model->get('data_koridor');
+	function min($koridor){
+		$data = $this->model->searchU($koridor, 'koridor', 'data_koridor');
 
 		$variabel = array(
 			'x1' => array(),
