@@ -65,7 +65,9 @@ if($this->session->userdata('session_id') == null){echo 'style="display:none;"';
 
 <script>
 	$(function () {
-		$("#example1").DataTable();
+		$("#example1").DataTable({
+			"scrollX" : true
+		});
 	});
 </script>
 
