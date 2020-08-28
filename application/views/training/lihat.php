@@ -23,14 +23,14 @@
 					<p>Koridor = <?= $inisial['koridor'] ?></p>
 					<hr>
 					<div class="row">
-						<div class="col-md-9">
+						<div class="col-md-12">
 							<?php
 							$input = json_decode($inisial['input'], true);
 							$hidden = json_decode($inisial['hidden'], true);
 							?>
 							<p>Bobot dan bias dari lapisan input ke lapisan hidden
 							</p>
-							<table class="table table-bordered">
+							<table class="table table-bordered example2">
 								<thead>
 								<tr>
 									<th>vij</th>
@@ -66,6 +66,7 @@
 								?>
 								</tbody>
 							</table>
+							<hr>
 						</div>
 						<div class="col-md-3">
 							<p>Bobot dan bias dari lapisan hidden ke lapisan output
@@ -107,14 +108,14 @@
 						else:
 							?>
 							<div class="row">
-								<div class="col-md-9">
+								<div class="col-md-12">
 									<?php
 									$input = json_decode($training['input'], true);
 									$hidden = json_decode($training['hidden'], true);
 									?>
 									<p>Bobot dan bias dari lapisan input ke lapisan hidden
 									</p>
-									<table class="table table-bordered">
+									<table class="table table-bordered example2">
 										<thead>
 										<tr>
 											<th>vij (baru)</th>
@@ -150,6 +151,7 @@
 										?>
 										</tbody>
 									</table>
+									<hr>
 								</div>
 								<div class="col-md-3">
 									<p>Bobot dan bias dari lapisan hidden ke lapisan output

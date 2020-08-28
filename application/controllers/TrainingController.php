@@ -55,6 +55,7 @@ class TrainingController extends CI_Controller
 				'jumlah' => $bagi,
 				'variasi_hidden' => $variasi,
 				'max_epoch' => $maxepoch,
+				'koridor' => $koridor,
 				'input' => json_encode($input),
 				'hidden' => json_encode($hidden)
 			);

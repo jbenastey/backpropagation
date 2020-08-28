@@ -68,6 +68,12 @@ if($this->session->userdata('session_id') == null){echo 'style="display:none;"';
 		$("#example1").DataTable({
 			"scrollX" : true
 		});
+		$(".example2").DataTable({
+			"searching" : false,
+			"paging" : false,
+			"info" : false,
+			"scrollX" : true
+		});
 	});
 </script>
 

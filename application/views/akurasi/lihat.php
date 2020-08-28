@@ -21,14 +21,14 @@
 					<p>Koridor = <?= $bobot['koridor'] ?></p>
 					<hr>
 					<div class="row">
-						<div class="col-md-9">
+						<div class="col-md-12">
 							<?php
 							$input = json_decode($bobot['input'], true);
 							$hidden = json_decode($bobot['hidden'], true);
 							?>
 							<p>Bobot dan bias dari lapisan input ke lapisan hidden
 							</p>
-							<table class="table table-bordered">
+							<table class="table table-bordered example2">
 								<thead>
 								<tr>
 									<th>vij (baru)</th>
@@ -64,6 +64,7 @@
 								?>
 								</tbody>
 							</table>
+							<hr>
 						</div>
 						<div class="col-md-3">
 							<p>Bobot dan bias dari lapisan hidden ke lapisan output
@@ -100,7 +101,7 @@
 						<?php
 						if ($akurasi == null):
 							?>
-							<a href="<?= base_url('akurasi/hitung-akurasi/' . $bobot['id']) ?>" class="btn btn-primary">Hitung
+							<a href="<?= base_url('akurasi/hitung-akurasi/' . $bobot['id_inisial']) ?>" class="btn btn-primary">Hitung
 								Training</a>
 						<?php
 						else:

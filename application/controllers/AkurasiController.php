@@ -24,10 +24,8 @@ class AkurasiController extends CI_Controller
 
 	public function lihat($id)
 	{
-		$data = array(
-			'bobot' => $this->model->getOneAkurasi($id),
-			'akurasi' => $this->model->getAkurasi1($id)
-		);
+		$data['bobot'] = $this->model->getOneAkurasi($id);
+		$data['akurasi'] = $this->model->getAkurasi1($data['bobot']['id']);
 		$this->load->view('template/header');
 		$this->load->view('akurasi/lihat', $data);
 		$this->load->view('template/footer');
@@ -93,7 +91,7 @@ class AkurasiController extends CI_Controller
 //		var_dump($hasil);
 //		var_dump($denom);
 		$simpan = array(
-			'id_bobot' => $id,
+			'id_bobot' => $bobot['id'],
 			'hasil_prediksi' => json_encode($hasil),
 			'denormalisasi' => json_encode($denom),
 			'target' => json_encode($target),

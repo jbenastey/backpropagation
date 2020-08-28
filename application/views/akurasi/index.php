@@ -37,7 +37,7 @@
 								<td><?= $value['jumlah'] ?></td>
 								<td><?= $value['max_epoch'] ?></td>
 								<td><?= $value['koridor'] ?></td>
-								<td class="text-center"><a href="<?= base_url('akurasi/lihat/'.$value['id']) ?>" class="btn btn-sm btn-primary">Lihat</a></td>
+								<td class="text-center"><a href="<?= base_url('akurasi/lihat/'.$value['id_inisial']) ?>" class="btn btn-sm btn-primary">Lihat</a></td>
 							</tr>
 						<?php
 						endforeach;
