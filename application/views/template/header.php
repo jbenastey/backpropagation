@@ -102,6 +102,13 @@ if ($this->uri->segment(2) == 'lihat') {
 						</a>
 					</li>
 					<li class="nav-item">
+						<a href="<?= base_url('pengguna') ?>"
+						   class="nav-link <?php if ($this->uri->segment('1') == 'pengguna') echo 'active' ?>">
+							<i class="nav-icon fa fa-user"></i>
+							<p class="text">Pengguna</p>
+						</a>
+					</li>
+					<li class="nav-item">
 						<a href="<?= base_url('data') ?>"
 						   class="nav-link <?php if ($this->uri->segment('1') == 'data') echo 'active' ?>">
 							<i class="nav-icon fa fa-file"></i>

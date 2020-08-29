@@ -68,5 +68,7 @@ $route['akurasi/lihat/(:any)'] = 'AkurasiController/lihat/$1';
 $route['akurasi/grafik/(:any)'] = 'AkurasiController/grafik/$1';
 $route['akurasi/hitung-akurasi/(:any)'] = 'AkurasiController/hitung/$1';
 
+$route['pengguna'] = 'PenggunaController';
+
 $route['login'] = 'AuthController/login';
 $route['logout'] = 'AuthController/logout';
