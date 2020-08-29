@@ -58,6 +58,13 @@ class Model extends CI_Model{
 		return $query->row_array();
 	}
 
+	public function getHapusData(){
+		$this->db->distinct();
+		$this->db->select('koridor');
+		$query = $this->db->get('data_koridor');
+		return $query->result_array();
+	}
+
 	public function searchU($id,$key,$table){
 		$this->db->from($table);
 		$this->db->where($key,$id);

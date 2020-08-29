@@ -20,7 +20,8 @@ class DataController extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'koridor' => $this->model->get('data_koridor')
+			'koridor' => $this->model->get('data_koridor'),
+			'hapus' => $this->model->getHapusData()
 		);
 		$this->load->view('template/header');
 		$this->load->view('data/index', $data);
