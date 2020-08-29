@@ -138,7 +138,7 @@
 												<td><?= $i + 1 ?></td>
 												<td><?= $hasil[$i] ?></td>
 												<td><?= $target[$i] ?></td>
-												<td><?= $denormalisasi[$i] ?></td>
+												<td><?= round($denormalisasi[$i]) ?></td>
 												<td><?= $targeta[$i] ?></td>
 											</tr>
 										<?php
