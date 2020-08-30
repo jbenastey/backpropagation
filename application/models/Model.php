@@ -21,6 +21,11 @@ class Model extends CI_Model{
 		$this->db->update($table, $data);
 	}
 
+	public function hapus($id,$key,$table){
+		$this->db->where($key, $id);
+		$this->db->delete($table);
+	}
+
 	public function first($id,$key,$table){
 		$this->db->from($table);
 		$this->db->where($key,$id);

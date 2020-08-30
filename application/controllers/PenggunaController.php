@@ -18,4 +18,10 @@ class PenggunaController extends CI_Controller
 		$this->load->view('pengguna/index', $data);
 		$this->load->view('template/footer');
 	}
+
+	public function delete($id){
+		$this->Model->hapus($id,'pengguna_id','pengguna');
+		redirect('pengguna');
+	}
+
 }
