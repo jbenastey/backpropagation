@@ -19,6 +19,35 @@ class PenggunaController extends CI_Controller
 		$this->load->view('template/footer');
 	}
 
+	public function edit($id){
+		if (isset($_POST['edit'])){
+			$username = $this->input->post('username');
+			$nama = $this->input->post('nama');
+			$password = $this->input->post('password');
+			if ($password == null){
+				$dataUpdate = array(
+					'pengguna_username' => $username,
+					'pengguna_nama' => $nama
+				);
+			} else {
+				$dataUpdate = array(
+					'pengguna_username' => $username,
+					'pengguna_nama' => $nama,
+					'pengguna_password' => md5($password)
+				);
+			}
+			$this->Model->update($id,'pengguna_id','pengguna',$dataUpdate);
+			redirect('pengguna');
+		} else {
+			$data = array(
+				'pengguna' => $this->Model->first($id,'pengguna_id','pengguna')
+			);
+			$this->load->view('template/header');
+			$this->load->view('pengguna/edit', $data);
+			$this->load->view('template/footer');
+		}
+	}
+
 	public function delete($id){
 		$this->Model->hapus($id,'pengguna_id','pengguna');
 		redirect('pengguna');
