@@ -24,6 +24,7 @@
 							<th>Bagi Data</th>
 							<th>Max Epoch</th>
 							<th>Koridor</th>
+							<th>MSE</th>
 							<th class="text-center"><i class="fa fa-gear"></i></th>
 						</tr>
 						</thead>
@@ -37,8 +38,18 @@
 								<td><?= $value['variasi_hidden'] ?></td>
 								<td><?= $value['jumlah'] ?></td>
 								<td><?= $value['max_epoch'] ?></td>
-								<td><?= $value['koridor'] ?></td>
-								<td class="text-center"><a href="<?= base_url('training/lihat/'.$value['id']) ?>" class="btn btn-sm btn-primary">Lihat</a></td>
+								<td><?= $value['koridor'] ?></td><td>
+									<?php
+									if($value['mse'] == null):
+										?>
+										<span class="badge badge-danger">Belum dihitung</span>
+									<?php
+									else:
+										echo $value['mse'];
+									endif
+									?>
+								</td>
+								<td class="text-center"><a href="<?= base_url('training/lihat/'.$value['id_in']) ?>" class="btn btn-sm btn-primary">Lihat</a></td>
 							</tr>
 						<?php
 						endforeach;

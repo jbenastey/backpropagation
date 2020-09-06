@@ -14,7 +14,7 @@ class TrainingController extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'inisial' => $this->model->get('inisialisasi')
+			'inisial' => $this->model->getTraining()
 		);
 		$this->load->view('template/header');
 		$this->load->view('training/index', $data);
@@ -69,7 +69,7 @@ class TrainingController extends CI_Controller
 
 	public function lihat($id)
 	{
-		$data['inisial'] = $this->model->first($id, 'id', 'inisialisasi');
+		$data['inisial'] = $this->model->first($id, 'id_in', 'inisialisasi');
 		$data['training'] = $this->model->first($id, 'id_inisial', 'bobot_baru');
 		$this->load->view('template/header');
 		$this->load->view('training/lihat', $data);

@@ -103,7 +103,7 @@
 						<?php
 						if($training == null):
 						?>
-							<a href="<?= base_url('training/hitung-training/'.$inisial['id']) ?>" class="btn btn-primary">Hitung Training</a>
+							<a href="<?= base_url('training/hitung-training/'.$inisial['id_in']) ?>" class="btn btn-primary">Hitung Training</a>
 						<?php
 						else:
 							?>

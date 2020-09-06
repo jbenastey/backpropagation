@@ -40,9 +40,17 @@ class Model extends CI_Model{
 		return $query->result_array();
 	}
 
+	public function getTraining(){
+		$this->db->from('inisialisasi');
+		$this->db->join('bobot_baru','bobot_baru.id_inisial = inisialisasi.id_in','left');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function getAkurasi(){
 		$this->db->from('inisialisasi');
 		$this->db->join('bobot_baru','bobot_baru.id_inisial = inisialisasi.id');
+		$this->db->join('akurasi','akurasi.id_bobot = bobot_baru.id','left');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
