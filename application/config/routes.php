@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['data'] = 'DataController';
+$route['hapus-data'] = 'DataController/hapus';
 $route['import'] = 'DataController/import';
 $route['normalisasi'] = 'DataController/normalisasi';
 

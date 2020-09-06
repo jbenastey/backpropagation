@@ -86,6 +86,12 @@ class DataController extends CI_Controller
 		}
 	}
 
+	public function hapus(){
+		$koridor = $this->input->post('koridor');
+		$this->model->hapus($koridor,'koridor','data_koridor');
+		redirect('data');
+	}
+
 
 	function max($koridor)
 	{

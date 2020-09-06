@@ -182,7 +182,7 @@
 					<div class="form-group">
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 							<button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-							<button type="submit" class="btn btn-success" name="gas">Proses</button>
+							<button type="submit" class="btn btn-success" name="gas" onclick="return confirm('Hapus Data ?')">Proses</button>
 						</div>
 					</div>
 				</form>
