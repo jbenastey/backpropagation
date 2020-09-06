@@ -57,8 +57,9 @@ class AkurasiController extends CI_Controller
 		$hasil = array();
 		$denom = array();
 		$target = array();
+		$hasilp = array();
+		$denomp = array();
 		$tas = array();
-		$persen = array();
 		$mses = 0;
 
 		foreach ($data as $key => $value) {
@@ -73,23 +74,47 @@ class AkurasiController extends CI_Controller
 				$yink += ($hidden[$i] * $zj[$i - 1]);
 			}
 			$yk = 1 / (1 + exp(0 - $yink));
-			array_push($hasil,$yk);
+			array_push($hasil, $yk);
 			$e1 = $value['targetn'] - $yk;
-			array_push($target,$value['targetn']);
+			array_push($target, $value['targetn']);
 
-			$ta = (($value['targetn']-0.1)*(($max-$min)/0.8))+$min;
-			array_push($tas,round($ta));
+			$ta = (($value['targetn'] - 0.1) * (($max - $min) / 0.8)) + $min;
+			array_push($tas, round($ta));
 
-			$d = (($yk-0.1)*(($max-$min)/0.8))+$min;
-			array_push($denom,$d);
+			$d = (($yk - 0.1) * (($max - $min) / 0.8)) + $min;
+			array_push($denom, $d);
 
 			$mse = $e1 * $e1;
 			$mses += $mse;
 		}
 		$mses = $mses / count($data);
 
-//		var_dump($hasil);
-//		var_dump($denom);
+		$enddata = (end($data));
+		$datap = array(
+			'x1n' => $enddata['x2n'],
+			'x2n' => $enddata['x3n'],
+			'x3n' => $enddata['x4n'],
+			'x4n' => $enddata['x5n'],
+			'x5n' => $enddata['targetn'],
+			'targetn' => $enddata['x1n'],
+		);
+
+		$zinj = array();
+		$zj = array();
+		foreach ($input as $key2 => $value2) {
+			array_push($zinj, ($value2[0] + $datap['x1n'] * $value2[1] + $datap['x2n'] * $value2[2] + $datap['x3n'] * $value2[3] + $datap['x4n'] * $value2[4] + $datap['x5n'] * $value2[5]));
+			array_push($zj, (1 / (1 + exp(0 - $zinj[$key2 - 1]))));
+		}
+		$yink = $hidden[0];
+		for ($i = 1; $i < count($hidden); $i++) {
+			$yink += ($hidden[$i] * $zj[$i - 1]);
+		}
+		$yk = 1 / (1 + exp(0 - $yink));
+		$hasilp = $yk;
+
+		$d = (($yk - 0.1) * (($max - $min) / 0.8)) + $min;
+		$denomp = $d;
+
 		$simpan = array(
 			'id_bobot' => $bobot['id'],
 			'hasil_prediksi' => json_encode($hasil),
@@ -98,17 +123,28 @@ class AkurasiController extends CI_Controller
 			'targeta' => json_encode($tas),
 			'mses' => $mses
 		);
+
+		$simpanp = array(
+			'id_bobot' => $bobot['id'],
+			'hasil' => $hasilp,
+			'denormalisasi' => $denomp
+		);
+//		var_dump($simpanp);
+
 		$this->model->tambah('akurasi',$simpan);
+		$this->model->tambah('prediksi',$simpanp);
 		redirect('akurasi/lihat/'.$id);
 
 	}
 
-	public function grafik($id){
+	public function grafik($id)
+	{
 		$akurasi = $this->model->getAkurasi1($id);
 		echo json_encode($akurasi);
 	}
 
-	function max($koridor){
+	function max($koridor)
+	{
 		$data = $this->model->searchU($koridor, 'koridor', 'data_koridor');
 
 		$variabel = array(
@@ -118,7 +154,7 @@ class AkurasiController extends CI_Controller
 			'x4' => array(),
 			'x5' => array(),
 		);
-		foreach ($data as $key => $value){
+		foreach ($data as $key => $value) {
 			array_push($variabel['x1'], $value['x1']);
 			array_push($variabel['x2'], $value['x2']);
 			array_push($variabel['x3'], $value['x3']);
@@ -128,7 +164,8 @@ class AkurasiController extends CI_Controller
 		return max($variabel['x1']);
 	}
 
-	function min($koridor){
+	function min($koridor)
+	{
 		$data = $this->model->searchU($koridor, 'koridor', 'data_koridor');
 
 		$variabel = array(
@@ -138,7 +175,7 @@ class AkurasiController extends CI_Controller
 			'x4' => array(),
 			'x5' => array(),
 		);
-		foreach ($data as $key => $value){
+		foreach ($data as $key => $value) {
 			array_push($variabel['x1'], $value['x1']);
 			array_push($variabel['x2'], $value['x2']);
 			array_push($variabel['x3'], $value['x3']);

@@ -102,7 +102,7 @@
 						if ($akurasi == null):
 							?>
 							<a href="<?= base_url('akurasi/hitung-akurasi/' . $bobot['id_inisial']) ?>" class="btn btn-primary">Hitung
-								Training</a>
+								Akurasi</a>
 						<?php
 						else:
 							?>
