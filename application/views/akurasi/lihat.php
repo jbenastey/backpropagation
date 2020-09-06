@@ -28,7 +28,7 @@
 							?>
 							<p>Bobot dan bias dari lapisan input ke lapisan hidden
 							</p>
-							<table class="table table-bordered example2">
+							<table class="table table-bordered example2" style="width: 100%">
 								<thead>
 								<tr>
 									<th>vij (baru)</th>
