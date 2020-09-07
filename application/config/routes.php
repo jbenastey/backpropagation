@@ -69,6 +69,9 @@ $route['akurasi/lihat/(:any)'] = 'AkurasiController/lihat/$1';
 $route['akurasi/grafik/(:any)'] = 'AkurasiController/grafik/$1';
 $route['akurasi/hitung-akurasi/(:any)'] = 'AkurasiController/hitung/$1';
 
+$route['prediksi'] = 'PrediksiController';
+$route['prediksi/lihat/(:any)'] = 'PrediksiController/lihat/$1';
+
 $route['pengguna'] = 'PenggunaController';
 $route['pengguna/edit/(:any)'] = 'PenggunaController/edit/$1';
 $route['pengguna/delete/(:any)'] = 'PenggunaController/delete/$1';

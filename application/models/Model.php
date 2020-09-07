@@ -47,6 +47,15 @@ class Model extends CI_Model{
 		return $query->result_array();
 	}
 
+	public function getPrediksi(){
+		$this->db->from('prediksi');
+		$this->db->join('bobot_baru','bobot_baru.id = prediksi.id_bobot');
+		$this->db->join('inisialisasi','inisialisasi.id_in = bobot_baru.id_inisial');
+		$this->db->join('akurasi','akurasi.id_bobot = bobot_baru.id');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function getAkurasi(){
 		$this->db->from('inisialisasi');
 		$this->db->join('bobot_baru','bobot_baru.id_inisial = inisialisasi.id_in');
@@ -59,6 +68,14 @@ class Model extends CI_Model{
 		$this->db->from('inisialisasi');
 		$this->db->join('bobot_baru','bobot_baru.id_inisial = inisialisasi.id_in');
 		$this->db->where('id_inisial',$id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+	public function getOnePrediksi($id){
+		$this->db->from('prediksi');
+		$this->db->join('bobot_baru','bobot_baru.id = prediksi.id_bobot');
+		$this->db->where('id_bobot',$id);
 		$query = $this->db->get();
 		return $query->row_array();
 	}

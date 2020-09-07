@@ -127,7 +127,7 @@ class AkurasiController extends CI_Controller
 		$simpanp = array(
 			'id_bobot' => $bobot['id'],
 			'hasil' => $hasilp,
-			'denormalisasi' => $denomp
+			'denormalisasi_hasil' => $denomp
 		);
 //		var_dump($simpanp);
 

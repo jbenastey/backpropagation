@@ -129,6 +129,13 @@ if ($this->uri->segment(2) == 'lihat') {
 							<p class="text">Akurasi</p>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('prediksi') ?>"
+						   class="nav-link <?php if ($this->uri->segment('1') == 'prediksi') echo 'active' ?>">
+							<i class="nav-icon fa fa-area-chart"></i>
+							<p class="text">Prediksi</p>
+						</a>
+					</li>
 				</ul>
 			</nav>
 			<!-- /.sidebar-menu -->
