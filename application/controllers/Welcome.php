@@ -24,11 +24,20 @@ class Welcome extends CI_Controller {
 		if (!$this->session->has_userdata('session_id')) {
 			redirect(base_url('login'));
 		}
+		$this->load->model('Model');
 	}
 	public function index()
 	{
+		$prediksi = $this->Model->getPrediksi();
+		$target = json_decode(end($prediksi)['targeta']);
+		$data = array(
+			'mses' => round(end($prediksi)['mses'],5),
+			'besok'=> round(end($prediksi)['denormalisasi_hasil']),
+			'sekarang'=> end($target),
+			'kemaren'=> $target[count($target)-2]
+		);
 		$this->load->view('template/header');
-		$this->load->view('beranda');
+		$this->load->view('beranda',$data);
 		$this->load->view('template/footer');
 	}
 }
