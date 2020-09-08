@@ -292,4 +292,7 @@ class TrainingController extends CI_Controller
 		$this->model->tambah('bobot_baru',$training);
 		redirect('training/lihat/'.$inisial['id']);
 	}
+
+	public function hapus($id){
+	}
 }

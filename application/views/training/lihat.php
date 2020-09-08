@@ -16,6 +16,8 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="card">
 				<div class="card-body">
+					<a href="<?= base_url('training/hapus/'.$inisial['id_in']) ?>" class="btn btn-outline-danger float-right" onclick="return confirm('Hapus Training ?')" title="Hapus Training"><i class="fa fa-trash"></i></a>
+					<a href="" class="btn btn-outline-success float-right mr-1" title="Edit Training"><i class="fa fa-edit"></i></a>
 					<p>Alpha = <?= $inisial['alpha'] ?></p>
 					<p>Bagi Data = <?= $inisial['jumlah'] ?></p>
 					<p>Variasi Hidden = <?= $inisial['variasi_hidden'] ?></p>
