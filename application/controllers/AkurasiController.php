@@ -33,7 +33,7 @@ class AkurasiController extends CI_Controller
 
 	public function hitung($id)
 	{
-		$inisial = $this->model->first($id, 'id', 'inisialisasi');
+		$inisial = $this->model->first($id, 'id_in', 'inisialisasi');
 		$bobot = $this->model->first($id, 'id_inisial', 'bobot_baru');
 		$datas = $this->model->searchU($inisial['koridor'], 'koridor', 'data_koridor');
 		$max = $this->max($inisial['koridor']);
