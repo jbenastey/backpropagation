@@ -78,7 +78,7 @@ class TrainingController extends CI_Controller
 
 	public function hitungTraining($id)
 	{
-		$inisial = $this->model->first($id, 'id', 'inisialisasi');
+		$inisial = $this->model->first($id, 'id_in', 'inisialisasi');
 		$datas = $this->model->search($inisial['koridor'],'koridor','data_koridor');
 
 		$data = array();
@@ -284,13 +284,13 @@ class TrainingController extends CI_Controller
 //		}
 		}
 		$training = array(
-			'id_inisial' => $inisial['id'],
+			'id_inisial' => $inisial['id_in'],
 			'input' => json_encode($vij),
 			'hidden' => json_encode($wjk),
 			'mse' => $mses
 		);
 		$this->model->tambah('bobot_baru',$training);
-		redirect('training/lihat/'.$inisial['id']);
+		redirect('training/lihat/'.$inisial['id_in']);
 	}
 
 	public function hapus($id){
