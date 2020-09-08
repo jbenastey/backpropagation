@@ -294,5 +294,15 @@ class TrainingController extends CI_Controller
 	}
 
 	public function hapus($id){
+		$inisial = $this->model->first($id,'id_in','inisialisasi');
+		$training = $this->model->getHapusTraining($id);
+		$akurasi = $this->model->getAkurasi1($training['id']);
+
+		$this->model->hapus($id,'id_in','inisialisasi');
+		$this->model->hapus($id,'id_inisial','bobot_baru');
+		$this->model->hapus($training['id'],'id_bobot','akurasi');
+		$this->model->hapus($training['id'],'id_bobot','prediksi');
+
+		redirect('training');
 	}
 }

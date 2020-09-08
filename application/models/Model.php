@@ -47,6 +47,14 @@ class Model extends CI_Model{
 		return $query->result_array();
 	}
 
+	public function getHapusTraining($id){
+		$this->db->from('inisialisasi');
+		$this->db->join('bobot_baru','bobot_baru.id_inisial = inisialisasi.id_in');
+		$this->db->where('id_in',$id);
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 	public function getPrediksi(){
 		$this->db->from('prediksi');
 		$this->db->join('bobot_baru','bobot_baru.id = prediksi.id_bobot');
