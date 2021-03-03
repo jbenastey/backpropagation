@@ -20,6 +20,7 @@
 						<p>Koridor = <?= $bobot['koridor'] ?></p>
 						<p><b>Hasil Prediksi = <?= $prediksi['hasil'] ?></b></p>
 						<p><b>Denormalisasi Hasil Prediksi = <?= round($prediksi['denormalisasi_hasil']) ?></b></p>
+						<p><b>MSE = <?= ($akurasi['mses']) ?></b></p>
 						<hr>
 
 						<div class="">
