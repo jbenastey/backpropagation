@@ -26,27 +26,29 @@
 								<input type="text" name="alpha" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Pembagian <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select name="bagi" id="last-name" class="form-control" required="required">
-									<option value="70">70</option>
-									<option value="80">80</option>
-									<option value="90">90</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Variasi Hidden</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<select name="variasi" id="middle-name" class="form-control" required="required">
-									<option value="3">3</option>
-									<option value="5">5</option>
-									<option value="8">8</option>
-								</select>
-							</div>
-						</div>
+						<input type="hidden" name="bagi" value="100">
+						<input type="hidden" name="variasi" value="5">
+<!--						<div class="form-group">-->
+<!--							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Pembagian <span class="required">*</span>-->
+<!--							</label>-->
+<!--							<div class="col-md-6 col-sm-6 col-xs-12">-->
+<!--								<select name="bagi" id="last-name" class="form-control" required="required">-->
+<!--									<option value="70">70</option>-->
+<!--									<option value="80">80</option>-->
+<!--									<option value="90">90</option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--						<div class="form-group">-->
+<!--							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Variasi Hidden</label>-->
+<!--							<div class="col-md-6 col-sm-6 col-xs-12">-->
+<!--								<select name="variasi" id="middle-name" class="form-control" required="required">-->
+<!--									<option value="5">5</option>-->
+<!--									<option value="8">8</option>-->
+<!--									<option value="12">12</option>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--						</div>-->
 						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Max Epoch <span class="required">*</span>
 							</label>
@@ -58,18 +60,13 @@
 							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Koridor</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<select name="koridor" id="middle-name" class="form-control" required="required">
-									<option value="1">1</option>
-									<option value="1A">1A</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4A">4A</option>
-									<option value="4B">4B</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7A">7A</option>
-									<option value="7B">7B</option>
-									<option value="8A">8A</option>
-									<option value="8B">8B</option>
+									<option value="senin">senin</option>
+									<option value="selasa">selasa</option>
+									<option value="rabu">rabu</option>
+									<option value="kamis">kamis</option>
+									<option value="jumat">jumat</option>
+									<option value="sabtu">sabtu</option>
+									<option value="minggu">minggu</option>
 								</select>
 							</div>
 						</div>

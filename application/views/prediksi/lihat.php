@@ -14,8 +14,8 @@
 				<div class="card">
 					<div class="card-body">
 						<p>Alpha = <?= $bobot['alpha'] ?></p>
-						<p>Bagi Data = <?= $bobot['jumlah'] ?></p>
-						<p>Variasi Hidden = <?= $bobot['variasi_hidden'] ?></p>
+<!--						<p>Bagi Data = --><?//= $bobot['jumlah'] ?><!--</p>-->
+<!--						<p>Variasi Hidden = --><?//= $bobot['variasi_hidden'] ?><!--</p>-->
 						<p>Max Epoch = <?= $bobot['max_epoch'] ?></p>
 						<p>Koridor = <?= $bobot['koridor'] ?></p>
 						<p><b>Hasil Prediksi = <?= $prediksi['hasil'] ?></b></p>

@@ -35,12 +35,12 @@ class AkurasiController extends CI_Controller
 	{
 		$inisial = $this->model->first($id, 'id_in', 'inisialisasi');
 		$bobot = $this->model->first($id, 'id_inisial', 'bobot_baru');
-		$datas = $this->model->searchU($inisial['koridor'], 'koridor', 'data_koridor');
+		$datas = $this->model->search($inisial['koridor'], 'koridor', 'data_koridor');
 		$max = $this->max($inisial['koridor']);
 		$min = $this->min($inisial['koridor']);
 
 		$data = array();
-		$jumlah = round(count($datas) * (100 - $inisial['jumlah']) / 100);
+		$jumlah = round(count($datas) * ($inisial['jumlah']) / 100);
 		for ($i = 0; $i < $jumlah; $i++) {
 			array_push($data, array(
 				'x1n' => $datas[$i]['x1n'],
@@ -51,6 +51,7 @@ class AkurasiController extends CI_Controller
 				'targetn' => $datas[$i]['targetn'],
 			));
 		}
+
 		$input = json_decode($bobot['input'], true);
 		$hidden = json_decode($bobot['hidden'], true);
 
@@ -133,7 +134,7 @@ class AkurasiController extends CI_Controller
 
 		$this->model->tambah('akurasi',$simpan);
 		$this->model->tambah('prediksi',$simpanp);
-		redirect('akurasi/lihat/'.$id);
+		redirect('training/lihat/'.$id);
 
 	}
 

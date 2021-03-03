@@ -19,8 +19,6 @@
 						<tr>
 							<th>No</th>
 							<th>Alpha</th>
-							<th>Variasi Hidden</th>
-							<th>Bagi Data</th>
 							<th>Max Epoch</th>
 							<th>Koridor</th>
 							<th>Akurasi (MSE)</th>
@@ -34,8 +32,6 @@
 							<tr>
 								<td><?= $key+1 ?></td>
 								<td><?= $value['alpha'] ?></td>
-								<td><?= $value['variasi_hidden'] ?></td>
-								<td><?= $value['jumlah'] ?></td>
 								<td><?= $value['max_epoch'] ?></td>
 								<td><?= $value['koridor'] ?></td>
 								<td>

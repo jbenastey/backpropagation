@@ -74,6 +74,7 @@ $route['prediksi'] = 'PrediksiController';
 $route['prediksi/lihat/(:any)'] = 'PrediksiController/lihat/$1';
 
 $route['pengguna'] = 'PenggunaController';
+$route['pengguna/create'] = 'PenggunaController/create';
 $route['pengguna/edit/(:any)'] = 'PenggunaController/edit/$1';
 $route['pengguna/delete/(:any)'] = 'PenggunaController/delete/$1';
 

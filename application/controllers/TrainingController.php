@@ -71,6 +71,8 @@ class TrainingController extends CI_Controller
 	{
 		$data['inisial'] = $this->model->first($id, 'id_in', 'inisialisasi');
 		$data['training'] = $this->model->first($id, 'id_inisial', 'bobot_baru');
+		$data['bobot'] = $this->model->getOneAkurasi($id);
+		$data['akurasi'] = $this->model->getAkurasi1($data['bobot']['id']);
 		$this->load->view('template/header');
 		$this->load->view('training/lihat', $data);
 		$this->load->view('template/footer');

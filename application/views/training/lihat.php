@@ -19,8 +19,6 @@
 					<a href="<?= base_url('training/hapus/'.$inisial['id_in']) ?>" class="btn btn-outline-danger float-right" onclick="return confirm('Hapus Training ?')" title="Hapus Training"><i class="fa fa-trash"></i></a>
 
 					<p>Alpha = <?= $inisial['alpha'] ?></p>
-					<p>Bagi Data = <?= $inisial['jumlah'] ?></p>
-					<p>Variasi Hidden = <?= $inisial['variasi_hidden'] ?></p>
 					<p>Max Epoch = <?= $inisial['max_epoch'] ?></p>
 					<p>Koridor = <?= $inisial['koridor'] ?></p>
 					<hr>
@@ -185,6 +183,67 @@
 								</div>
 							</div>
 						<p><b>MSE = <?= $training['mse'] ?></b></p>
+							<hr>
+
+							<div class="">
+								<?php
+								if ($akurasi == null):
+									?>
+									<a href="<?= base_url('akurasi/hitung-akurasi/' . $bobot['id_inisial']) ?>" class="btn btn-primary">Hitung
+										Akurasi</a>
+								<?php
+								else:
+									?>
+									<div class="row">
+										<div class="col-12">
+											<input type="hidden" value="<?= $akurasi['id_bobot'] ?>" id="id">
+											<div class="chart">
+												<canvas id="akurasi-chart" width="1000" height="280"></canvas>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<table class="table table-bordered">
+												<thead>
+												<tr>
+													<th>Data</th>
+													<th>Hasil Prediksi</th>
+													<th>Target</th>
+													<th>Denormalisasi Hasil Prediksi</th>
+													<th>Nilai Target Asli</th>
+												</tr>
+												</thead>
+												<tbody>
+												<?php
+												$hasil = json_decode($akurasi['hasil_prediksi'], true);
+												$target = json_decode($akurasi['target'], true);
+												$denormalisasi = json_decode($akurasi['denormalisasi'], true);
+												$targeta = json_decode($akurasi['targeta'], true);
+												for ($i = 0; $i < count($hasil); $i++):
+													?>
+													<tr>
+														<td><?= $i + 1 ?></td>
+														<td><?= $hasil[$i] ?></td>
+														<td><?= $target[$i] ?></td>
+														<td><?= round($denormalisasi[$i]) ?></td>
+														<td><?= $targeta[$i] ?></td>
+													</tr>
+												<?php
+												endfor;
+												?>
+												<tr>
+													<td colspan="4" class="text-center"><b>MSE</b></td>
+													<td><b><?= $akurasi['mses'] ?></b></td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								<?php
+								endif
+								?>
+							</div>
 						<?php
 						endif
 						?>

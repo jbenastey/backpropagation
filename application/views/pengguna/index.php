@@ -3,7 +3,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1 class="m-0 text-dark">Data Koridor</h1>
+				<h1 class="m-0 text-dark">Data Pengguna</h1>
 			</div><!-- /.col -->
 		</div><!-- /.row -->
 	</div><!-- /.container-fluid -->
@@ -17,6 +17,7 @@
 					<div class="card-body">
 						<hr>
 						<table class="table table-bordered" id="example3" style="width: 100%">
+							<a href="<?= base_url('pengguna/create') ?>" class="btn btn-primary float-right btn-sm">Tambah </a>
 							<thead>
 							<tr>
 								<th>No</th>

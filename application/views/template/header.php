@@ -122,13 +122,13 @@ if ($this->uri->segment(2) == 'lihat') {
 							<p class="text">Training</p>
 						</a>
 					</li>
-					<li class="nav-item">
-						<a href="<?= base_url('akurasi') ?>"
-						   class="nav-link <?php if ($this->uri->segment('1') == 'akurasi') echo 'active' ?>">
-							<i class="nav-icon fa fa-line-chart"></i>
-							<p class="text">Akurasi</p>
-						</a>
-					</li>
+<!--					<li class="nav-item">-->
+<!--						<a href="--><?//= base_url('akurasi') ?><!--"-->
+<!--						   class="nav-link --><?php //if ($this->uri->segment('1') == 'akurasi') echo 'active' ?><!--">-->
+<!--							<i class="nav-icon fa fa-line-chart"></i>-->
+<!--							<p class="text">Akurasi</p>-->
+<!--						</a>-->
+<!--					</li>-->
 					<li class="nav-item">
 						<a href="<?= base_url('prediksi') ?>"
 						   class="nav-link <?php if ($this->uri->segment('1') == 'prediksi') echo 'active' ?>">

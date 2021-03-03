@@ -125,18 +125,13 @@
 						<div class="col-md-12 col-sm-6 col-xs-12">
 							<label for="middle-name">Pilih Koridor</label>
 							<select name="koridor" id="middle-name" class="form-control" required="required">
-								<option value="1">1</option>
-								<option value="1A">1A</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4A">4A</option>
-								<option value="4B">4B</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7A">7A</option>
-								<option value="7B">7B</option>
-								<option value="8A">8A</option>
-								<option value="8B">8B</option>
+								<option value="senin">senin</option>
+								<option value="selasa">selasa</option>
+								<option value="rabu">rabu</option>
+								<option value="kamis">kamis</option>
+								<option value="jumat">jumat</option>
+								<option value="sabtu">sabtu</option>
+								<option value="minggu">minggu</option>
 							</select>
 						</div>
 					</div>
