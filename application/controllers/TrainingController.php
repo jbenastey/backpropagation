@@ -99,9 +99,23 @@ class TrainingController extends CI_Controller
 		$input = json_decode($inisial['input'], true);
 		$hidden = json_decode($inisial['hidden'], true);
 
+		$max = $this->max($inisial['koridor']);
+		$min = $this->min($inisial['koridor']);
+
 		$vij = array();
 		$wjk = array();
 		$mses = 0;
+
+		$hasil = array();
+		$denom = array();
+		$target = array();
+		$hasilp = array();
+		$denomp = array();
+		$tas = array();
+
+		$ykA = array();
+		$taA = array();
+		$dA = array();
 
 		$epoch = 0;
 		for ($a = 0; $a < $inisial['max_epoch']; $a++) {
@@ -120,7 +134,12 @@ class TrainingController extends CI_Controller
 								$yink += ($hidden[$i] * $zj[$i - 1]);
 							}
 							$yk = 1 / (1 + exp(0 - $yink));
+							$ykA[$key] = $yk;
 							$e1 = $value['targetn'] - $yk;
+							$ta = (($value['targetn'] - 0.1) * (($max - $min) / 0.8)) + $min;
+							$taA[$key] = $ta;
+							$d = (($yk - 0.1) * (($max - $min) / 0.8)) + $min;
+							$dA[$key] = $d;
 							$dk = $e1 * $yk * (1 - $yk);
 							$dwjk = array(0 => $inisial['alpha'] * $dk);
 							foreach ($zj as $key2 => $value2) {
@@ -176,7 +195,12 @@ class TrainingController extends CI_Controller
 							}
 							$yk = 1 / (1 + exp(0 - $yink));
 							$e1 = $value['targetn'] - $yk;
+							$ta = (($value['targetn'] - 0.1) * (($max - $min) / 0.8)) + $min;
+							$d = (($yk - 0.1) * (($max - $min) / 0.8)) + $min;
 							$dk = $e1 * $yk * (1 - $yk);
+							$ykA[$key] = $yk;
+							$taA[$key] = $ta;
+							$dA[$key] = $d;
 							$dwjk = array(0 => $inisial['alpha'] * $dk);
 							foreach ($zj as $key2 => $value2) {
 								array_push($dwjk, $inisial['alpha'] * $dk * $value2);
@@ -235,7 +259,12 @@ class TrainingController extends CI_Controller
 						}
 						$yk = 1 / (1 + exp(0 - $yink));
 						$e1 = $value['targetn'] - $yk;
+						$ta = (($value['targetn'] - 0.1) * (($max - $min) / 0.8)) + $min;
+						$d = (($yk - 0.1) * (($max - $min) / 0.8)) + $min;
 						$dk = $e1 * $yk * (1 - $yk);
+						$ykA[$key] = $yk;
+						$taA[$key] = $ta;
+						$dA[$key] = $d;
 						$dwjk = array(0 => $inisial['alpha'] * $dk);
 						foreach ($zj as $key2 => $value2) {
 							array_push($dwjk, $inisial['alpha'] * $dk * $value2);
@@ -315,40 +344,14 @@ class TrainingController extends CI_Controller
 		$input = json_decode($bobot['input'], true);
 		$hidden = json_decode($bobot['hidden'], true);
 
-		$hasil = array();
-		$denom = array();
-		$target = array();
-		$hasilp = array();
-		$denomp = array();
-		$tas = array();
-		$mses = 0;
 
 		foreach ($data as $key => $value) {
-			$zinj = array();
-			$zj = array();
-			foreach ($input as $key2 => $value2) {
-				array_push($zinj, ($value2[0] + $value['x1n'] * $value2[1] + $value['x2n'] * $value2[2] + $value['x3n'] * $value2[3] + $value['x4n'] * $value2[4] + $value['x5n'] * $value2[5]));
-				array_push($zj, (1 / (1 + exp(0 - $zinj[$key2 - 1]))));
-			}
-			$yink = $hidden[0];
-			for ($i = 1; $i < count($hidden); $i++) {
-				$yink += ($hidden[$i] * $zj[$i - 1]);
-			}
-			$yk = 1 / (1 + exp(0 - $yink));
-			array_push($hasil, $yk);
-			$e1 = $value['targetn'] - $yk;
+			array_push($hasil, $ykA[$key]);
 			array_push($target, $value['targetn']);
+			array_push($tas, round($taA[$key]));
+			array_push($denom, $dA[$key]);
 
-			$ta = (($value['targetn'] - 0.1) * (($max - $min) / 0.8)) + $min;
-			array_push($tas, round($ta));
-
-			$d = (($yk - 0.1) * (($max - $min) / 0.8)) + $min;
-			array_push($denom, $d);
-
-			$mse = $e1 * $e1;
-			$mses += $mse;
 		}
-		$mses = $mses / count($data);
 
 		$enddata = (end($data));
 		$datap = array(
@@ -390,7 +393,7 @@ class TrainingController extends CI_Controller
 			'hasil' => $hasilp,
 			'denormalisasi_hasil' => $denomp
 		);
-//		var_dump($simpanp);
+//		var_dump($simpan);
 
 		$this->model->tambah('akurasi',$simpan);
 		$this->model->tambah('prediksi',$simpanp);
