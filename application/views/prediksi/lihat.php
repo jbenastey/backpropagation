@@ -18,8 +18,16 @@
 <!--						<p>Variasi Hidden = --><?//= $bobot['variasi_hidden'] ?><!--</p>-->
 						<p>Max Epoch = <?= $bobot['max_epoch'] ?></p>
 						<p>Koridor = <?= $bobot['koridor'] ?></p>
-						<p><b>Hasil Prediksi = <?= $prediksi['hasil'] ?></b></p>
-						<p><b>Denormalisasi Hasil Prediksi = <?= round($prediksi['denormalisasi_hasil']) ?></b></p>
+						<p>
+							<b>Hasil Prediksi = <?php
+								$hasilPrediksi = json_decode($akurasi['hasil_prediksi']);
+								echo end($hasilPrediksi)
+								?></b>
+						</p>
+						<p><b>Denormalisasi Hasil Prediksi = <?php
+								$hasilDenom = json_decode($akurasi['denormalisasi']);
+								echo round(end($hasilDenom))
+								?></b></p>
 						<p><b>MSE = <?= ($akurasi['mses']) ?></b></p>
 						<hr>
 
